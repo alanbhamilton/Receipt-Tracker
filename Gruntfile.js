@@ -165,7 +165,7 @@ module.exports = function(grunt) {
           nodeArgs: ['--debug'],
           watchedFolders: ['controllers', 'app', 'lib'],
           env: {
-            PORT: '3300'
+            PORT: '3000'
           }
         }
       }
