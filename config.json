@@ -3,7 +3,7 @@
 		"port": 3000,
 		"public_dir": "public"
 	},
-  "mongodb": {
-    "url": ""
+  "mongoose": {
+    "url": "mongodb://localhost:27017/MyApp"
   }
 }
