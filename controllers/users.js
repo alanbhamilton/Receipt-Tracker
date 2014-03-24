@@ -3,7 +3,7 @@ var models = require('../app/models'),
 
 module.exports = {
   index: function(req, res) {
-    models.Users.find({}, function(err, data) {
+    models.User.find({}, function(err, data) {
       res.json(data);
     });
   },
