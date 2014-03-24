@@ -1,0 +1,9 @@
+{
+	"server": {
+		"port": 3000,
+		"public_dir": "public"
+	},
+  "mongodb": {
+    "url": ""
+  }
+}

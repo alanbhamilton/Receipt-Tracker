@@ -5,9 +5,10 @@ var express = require('express'),
     exphbs = require('express3-handlebars'),
     mongoose = require('mongoose'),
     seeder = require('./app/seeder'),
+    config = require('./config.json'),
     app = express();
 
-app.set('port', process.env.PORT || 3300);
+app.set('port', process.env.PORT || config.server.port);
 app.set('views', __dirname + '/views');
 app.engine('handlebars', exphbs({
   defaultLayout: 'main',
@@ -21,7 +22,7 @@ app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use(express.cookieParser('some-secret-value-here'));
 app.use(app.router);
-app.use('/', express.static(path.join(__dirname, 'public')));
+app.use('/', express.static(path.join(__dirname, config.server.public_dir)));
 
 // development only
 if ('development' == app.get('env')) {
