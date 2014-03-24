@@ -3,7 +3,7 @@ var mongoose = require('mongoose'),
     ObjectId = Schema.ObjectId;
 
 
-var User = new Schema({
+var userSchema = new Schema({
   name: {
     first:   { type: String },
     last:    { type: String }
@@ -11,10 +11,13 @@ var User = new Schema({
   email:     { type: String },
   username:  { type: String },
   password:  { type: String },
-  tags:      [ { type: String } ]
+  tags:      {
+    type: Array,
+    default: []
+  }
 });
 
-var Receipt = new Schema({
+var receiptSchema = new Schema({
   user:      {
     type:    ObjectId,
     ref:     'User'
@@ -32,6 +35,6 @@ var Receipt = new Schema({
 });
 
 module.exports = {
-    User: mongoose.model('User', User),
-    Receipt: mongoose.model('Receipt', Receipt)
+    User: mongoose.model('User', userSchema),
+    Receipt: mongoose.model('Receipt', receiptSchema)
 };
