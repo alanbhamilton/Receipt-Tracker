@@ -1,5 +1,4 @@
-var expect = require('chai').expect,
-    find = require('../findInString');
+var find = require('../../lib/findInString');
 
 describe('find', function () {
 

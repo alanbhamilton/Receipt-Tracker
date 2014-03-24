@@ -1,5 +1,4 @@
-var expect = require('chai').expect,
-    find = require('../ocr');
+var find = require('../../lib/ocr');
 
 describe('ocr', function () {
 
