@@ -29,19 +29,20 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-//connect to the db server:
-mongoose.connect('mongodb://localhost/MyApp');
-mongoose.connection.on('open', function() {
-  console.log("Connected to Mongoose...");
-
-  // check if the db is empty, if so seed it with some contacts:
-  seeder.check();
-});
-
-//routes list:
+//routes list
 routes.initialize(app);
 
-//finally boot up the server:
-http.createServer(app).listen(app.get('port'), function() {
-  console.log('Server up: http://localhost:' + app.get('port'));
+//connect to the db server
+mongoose.connect('mongodb://localhost/MyApp');
+mongoose.connection.on('error', console.error.bind(console, 'connection error:'));
+mongoose.connection.once('open', function() {
+  console.log("Connected to Mongoose...");
+
+  // check if the db is empty, if so seed it with some contacts
+  seeder.check();
+
+  // boot up the server
+  http.createServer(app).listen(app.get('port'), function() {
+    console.log('Server up: http://localhost:' + app.get('port'));
+  });
 });
