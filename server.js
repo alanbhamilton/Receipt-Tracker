@@ -5,7 +5,8 @@ var config = require('./config.json'),
     routes = require('./app/routes'),
     exphbs = require('express3-handlebars'),
     mongoose = require('mongoose'),
-    seeder = require('./app/seeder'),
+    // seeder = require('./app/seeder'),
+    userDirs = require('./lib/userdirs'),
     app = express();
 
 app.set('port', process.env.PORT || config.server.port);
@@ -36,9 +37,13 @@ routes.initialize(app);
 mongoose.connect(config.mongoose.url);
 mongoose.connection.on('error', console.error.bind(console, 'connection error:'));
 mongoose.connection.once('open', function() {
-  console.log("Mongoose connected to: " + config.mongoose.url);
+  console.log("\nMongoose connected to: " + config.mongoose.url);
+
   // boot up the server
   http.createServer(app).listen(app.get('port'), function() {
     console.log('Server up: http://localhost:' + app.get('port'));
+
+    // Check
+    setInterval(userDirs.check(path.join(__dirname, config.user_data.folder)), 5000);
   });
 });
