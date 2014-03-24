@@ -5,33 +5,24 @@ var mongoose = require('mongoose'),
 
 var userSchema = new Schema({
   name: {
-    first:   { type: String },
-    last:    { type: String }
+    first: { type: String },
+    last: { type: String }
   },
-  email:     { type: String },
-  username:  { type: String },
-  password:  { type: String },
-  tags:      {
-    type: Array,
-    default: []
-  }
+  email: { type: String },
+  username: { type: String },
+  password: { type: String },
+  tags: { type: Array, default: [] }
 });
 
 var receiptSchema = new Schema({
-  user:      {
-    type:    ObjectId,
-    ref:     'User'
-  },
-  title:     { type: String },
-  date:      { type: Date },
-  total:     { type: Number },
-  dateAdded: {
-    type:    Date,
-    default: Date.now
-  },
-  tags:      [ { type: String } ],
-  note:      { type: String },
-  fspath:    { type: String }
+  user: { type: ObjectId, ref: 'User' },
+  title: { type: String },
+  date: { type: Date },
+  total: { type: Number },
+  dateAdded: { type: Date, default: Date.now },
+  tags: { type: Array, default: [] },
+  note: { type: String },
+  fspath: { type: String }
 });
 
 module.exports = {
