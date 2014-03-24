@@ -1,11 +1,11 @@
-var express = require('express'),
+var config = require('./config.json'),
+    express = require('express'),
     http = require('http'),
     path = require('path'),
     routes = require('./app/routes'),
     exphbs = require('express3-handlebars'),
     mongoose = require('mongoose'),
     seeder = require('./app/seeder'),
-    config = require('./config.json'),
     app = express();
 
 app.set('port', process.env.PORT || config.server.port);
@@ -39,7 +39,7 @@ mongoose.connection.once('open', function() {
   console.log("Connected to Mongoose: " + config.mongoose.url);
 
   // check if the db is empty, if so seed it with some contacts
-  seeder.check();
+  // seeder.check();
 
   // boot up the server
   http.createServer(app).listen(app.get('port'), function() {
