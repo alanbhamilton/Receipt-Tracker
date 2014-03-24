@@ -30,10 +30,10 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-//routes list
+// routes list
 routes.initialize(app);
 
-//connect to the db server
+// connect to the db server
 mongoose.connect(config.mongoose.url);
 mongoose.connection.on('error', console.error.bind(console, 'connection error:'));
 mongoose.connection.once('open', function() {
@@ -43,7 +43,7 @@ mongoose.connection.once('open', function() {
   http.createServer(app).listen(app.get('port'), function() {
     console.log('Server up: http://localhost:' + app.get('port'));
 
-    // Check
+    // set up interval checks of user folders for added documents
     setInterval(userDirs.check(path.join(__dirname, config.user_data.folder)), 5000);
   });
 });
