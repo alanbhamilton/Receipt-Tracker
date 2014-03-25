@@ -45,13 +45,13 @@ describe('Users Controller', function() {
     });
   });
 
-  describe('getById', function() {
+  describe('show', function() {
     it('should be defined', function() {
-      expect(users.getById).to.be.a('function');
+      expect(users.show).to.be.a('function');
     });
 
     it('should send json on successful retrieve', function() {
-      users.getById(req, res);
+      users.show(req, res);
       expect(res.json).calledOnce;
     });
 
@@ -61,12 +61,12 @@ describe('Users Controller', function() {
           callback(null, {error: 'User not found.'});
         }
       };
-      users.getById(req, res);
+      users.show(req, res);
       expect(res.json).calledWith({error: 'User not found.'});
     });
   });
 
-  describe('add', function() {
+  describe('create', function() {
     beforeEach(function() {
       req.body = {
         name: 'testing',
@@ -76,12 +76,12 @@ describe('Users Controller', function() {
     });
 
     it('should be defined', function() {
-      expect(users.add).to.be.a('function');
+      expect(users.create).to.be.a('function');
     });
 
     // TODO: I added a call to userDirs.create in this route handler
     // and broke this test. needs fixing
-    
+
     /*
     it('should return json on save', function() {
 
@@ -92,7 +92,7 @@ describe('Users Controller', function() {
         return;
       });
 
-      users.add(req, res);
+      users.create(req, res);
       expect(res.json).calledWith(req.body);
     });
     */
@@ -106,12 +106,12 @@ describe('Users Controller', function() {
         return;
       });
 
-      users.add(req, res);
+      users.create(req, res);
       expect(res.json).calledWith({error: 'Error adding user.'});
     });
   });
 
-  describe('delete', function() {
+  describe('destroy', function() {
     beforeEach(function() {
       req.body = {
         id: '1',
@@ -122,7 +122,7 @@ describe('Users Controller', function() {
     });
 
     it('should be defined', function() {
-      expect(users.delete).to.be.a('function');
+      expect(users.destroy).to.be.a('function');
     });
 
     it('should return json on save', function() {
@@ -133,7 +133,7 @@ describe('Users Controller', function() {
         }
       };
 
-      users.delete(req, res);
+      users.destroy(req, res);
       expect(contactSpy.remove).calledOnce;
     });
     it('should return error on failed save', function() {
@@ -143,7 +143,7 @@ describe('Users Controller', function() {
         }
       };
 
-      users.delete(req, res);
+      users.destroy(req, res);
       expect(res.json).calledWith({error: 'User not found.'});
     });
   });
