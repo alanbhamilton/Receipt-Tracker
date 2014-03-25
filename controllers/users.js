@@ -1,7 +1,6 @@
 var models = require('../app/models'),
-    fs = require('fs'),
-    config = require('../config.json'),
-    md5 = require('MD5');
+    md5 = require('MD5'),
+    userDirs = require('../lib/userDirs');
 
 module.exports = {
   index: function(req, res) {
@@ -26,9 +25,7 @@ module.exports = {
         res.json({error: 'Error adding user.'});
       } else {
         res.json(user);
-        fs.mkdir(config.user_data.folder, function () {
-          if (err) { console.error(err); }
-        });
+        userDirs.create(user._id.toString());
       }
     });
   },
