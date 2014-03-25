@@ -27,5 +27,6 @@ var receiptSchema = new Schema({
 
 module.exports = {
     User: mongoose.model('User', userSchema),
-    Receipt: mongoose.model('Receipt', receiptSchema)
+    Receipt: mongoose.model('Receipt', receiptSchema),
+    ObjectId: ObjectId
 };
