@@ -11,7 +11,7 @@ mongodb - easiest via homebrew (OSX)
     $ npm install
     $ grunt init:dev
 
-Grunt init:dev only needs to be run the first time to prepare the vendor.js
+`Grunt init:dev` only needs to be run the first time to prepare the vendor.js
 files.
 
 ## Running the App:
