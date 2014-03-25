@@ -1,4 +1,4 @@
-var find = require('../../lib/findInString');
+var find = require('../../lib/findinstring');
 
 describe('find', function () {
 
