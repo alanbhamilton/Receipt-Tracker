@@ -15,11 +15,11 @@ var userSchema = new Schema({
 });
 
 var receiptSchema = new Schema({
-  user: { type: ObjectId, ref: 'User' },
+  owner: { type: ObjectId, ref: 'User' },
   title: { type: String },
   date: { type: Date },
   total: { type: Number },
-  dateAdded: { type: Date, default: Date.now },
+  // dateProcessed: { type: Date, default: Date.now },
   tags: { type: Array, default: [] },
   note: { type: String },
   fspath: { type: String }
