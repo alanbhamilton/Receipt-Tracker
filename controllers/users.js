@@ -3,7 +3,7 @@ var models = require('../app/models'),
     userDirs = require('../lib/userDirs');
 
 exports.index = function(req, res) {
-  models.User.find({}, function(err, users) {
+  models.User.find({}, {password: 0}, function(err, users) {
     res.json(users);
   });
 };

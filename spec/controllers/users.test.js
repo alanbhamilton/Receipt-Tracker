@@ -40,6 +40,11 @@ describe('Users Controller', function() {
     });
 
     it('should send json', function() {
+      modelsStub.User = {
+        find: function(query, project, callback) {
+          callback(null, {});
+        }
+      };
       users.index(req, res);
       expect(res.json).calledOnce;
     });
