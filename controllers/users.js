@@ -3,11 +3,13 @@ var models = require('../app/models'),
     userDirs = require('../lib/userDirs');
 
 module.exports = {
+
   index: function(req, res) {
-    models.User.find({}, function(err, data) {
-      res.json(data);
+    models.User.find({}, function(err, users) {
+      res.json(users);
     });
   },
+
   getById: function(req, res) {
     models.User.find({ _id: req.params.id }, function(err, user) {
       if (err) {
@@ -17,6 +19,7 @@ module.exports = {
       }
     });
   },
+
   add: function(req, res) {
     var newUser = new models.User(req.body);
     // newContact.gravatar = md5(newContact.email);
@@ -29,6 +32,7 @@ module.exports = {
       }
     });
   },
+
   // update: function(req, res) {
   //     console.log(req.body);
   //     models.User.update({ _id: req.body.id }, req.body, function(err, updated) {
@@ -39,6 +43,7 @@ module.exports = {
   //         }
   //     })
   // },
+
   delete: function(req, res) {
     models.User.findOne({ _id: req.params.id }, function(err, user) {
       if (err) {
