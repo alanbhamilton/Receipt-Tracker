@@ -44,6 +44,6 @@ mongoose.connection.once('open', function() {
     console.log('Server up: http://localhost:' + app.get('port'));
 
     // set up interval checks of user folders for added documents
-    setInterval(userDirs.check(path.join(__dirname, config.user_data.folder)), 5000);
+    setInterval(userDirs.check(config.user_data.folder), 5000);
   });
 });

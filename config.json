@@ -7,6 +7,6 @@
     "url": "mongodb://localhost:27017/receipts-dev"
   },
 	"user_data": {
-		"folder": "user_data"
+		"folder": "/Users/alan/code/receipt_tracker/user_data"
 	}
 }
