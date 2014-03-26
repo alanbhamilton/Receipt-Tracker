@@ -1,6 +1,7 @@
 var home = require('../controllers/home'),
     users = require('../controllers/users'),
-    receipts = require('../controllers/receipts');
+    receipts = require('../controllers/receipts'),
+    image = require('../controllers/image');
 
 module.exports.initialize = function(app) {
   app.get('/', home.index);
@@ -17,5 +18,5 @@ module.exports.initialize = function(app) {
   app.put('/api/users/:uid/receipts/:rid', receipts.update);
   app.delete('/api/users/:uid/receipts/:rid', receipts.destroy);
 
-  // app.get('/api/users/:uid/receipts/:rid/image', image.show);
+  app.get('/api/users/:uid/receipts/:rid/image', image.show);
 };
