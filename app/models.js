@@ -9,7 +9,6 @@ var userSchema = new Schema({
     last: { type: String }
   },
   email: { type: String },
-  username: { type: String },
   password: { type: String },
   tags: { type: Array, default: [] }
 });
