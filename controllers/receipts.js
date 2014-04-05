@@ -1,12 +1,12 @@
-var models = require('../app/models'),
-    md5 = require('MD5'),
+var Receipt = require('../models/receipt').Receipt,
+    // md5 = require('MD5'),
     userDirs = require('../lib/userDirs');
 
 exports.index = function(req, res) {
   var query = {owner: req.params.uid},
       project = {owner: 0, fspath: 0};
 
-  models.Receipt.find(query, project, function(err, receipts) {
+  Receipt.find(query, project, function(err, receipts) {
     if (err) { console.error(err); }
     if (receipts) {
       res.json(receipts);
@@ -33,7 +33,7 @@ exports.show = function(req, res) {
   var query = {owner: req.params.uid, _id: req.params.rid},
       project = {owner: 0, fspath: 0};
 
-  models.Receipt.find(query, project, function(err, receipt) {
+  Receipt.find(query, project, function(err, receipt) {
     if (err) { console.error(err); }
     if (receipt) {
       res.json(receipt);
@@ -48,7 +48,7 @@ exports.update = function(req, res) {
   var query = {owner: req.params.uid, _id: req.params.rid},
       project = {owner: 0, fspath: 0};
 
-  models.Receipt.findOneAndUpdate(query, req.body, function(err, receipt) {
+  Receipt.findOneAndUpdate(query, req.body, function(err, receipt) {
     if (err) { console.error(err); }
     if (receipt) {
       receipt = receipt.toObject();
@@ -66,7 +66,7 @@ exports.destroy = function(req, res) {
   var query = {owner: req.params.uid, _id: req.params.rid},
       project = {owner: 0, fspath: 0};
 
-  models.Receipt.findOneAndRemove(query, function(err, removed) {
+  Receipt.findOneAndRemove(query, function(err, removed) {
     if (err) { console.error(err); }
     if (removed) {
       res.json(200, {status: 'Success'});

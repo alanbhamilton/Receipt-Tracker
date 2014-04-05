@@ -1,15 +1,15 @@
-var models = require('../app/models'),
+var User = require('../models/user').User,
     md5 = require('MD5'),
     userDirs = require('../lib/userDirs');
 
 exports.index = function(req, res) {
-  models.User.find({}, {password: 0}, function(err, users) {
+  User.find({}, {password: 0}, function(err, users) {
     res.json(users);
   });
 };
 
 exports.create = function(req, res) {
-  var newUser = new models.User(req.body);
+  var newUser = new User(req.body);
   newUser.save(function(err, user) {
     if (err) {
       res.json({error: 'Error adding user.'});
@@ -21,7 +21,7 @@ exports.create = function(req, res) {
 };
 
 exports.show = function(req, res) {
-  models.User.find({ _id: req.params.id }, function(err, user) {
+  User.find({ _id: req.params.id }, function(err, user) {
     if (err) {
       res.json({error: 'User not found.'});
     } else {
@@ -32,7 +32,7 @@ exports.show = function(req, res) {
 
 // exports.update = function(req, res) {
 //     console.log(req.body);
-//     models.User.update({ _id: req.body.id }, req.body, function(err, updated) {
+//     User.update({ _id: req.body.id }, req.body, function(err, updated) {
 //         if (err) {
 //             res.json({error: 'User not found.'});
 //         } else {
@@ -42,7 +42,7 @@ exports.show = function(req, res) {
 // },
 
 exports.destroy = function(req, res) {
-  models.User.findOne({ _id: req.params.id }, function(err, user) {
+  User.findOne({ _id: req.params.id }, function(err, user) {
     if (err) {
       res.json({error: 'User not found.'});
     } else {
