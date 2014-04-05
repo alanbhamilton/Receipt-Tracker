@@ -1,5 +1,4 @@
-var User = require('../models/user').User,
-    userDirs = require('../lib/userDirs');
+var User = require('../models/user').User;
 
 exports.index = function(req, res) {
   User.find({}, {password: 0}, function(err, users) {
@@ -14,7 +13,7 @@ exports.create = function(req, res) {
       res.json({error: 'Error adding user.'});
     } else {
       res.json(user);
-      userDirs.create(user._id.toString(), function (err) {
+      user.createReceiptFolders(function (err) {
         if (err) { console.error(err); }
       });
     }
