@@ -1,5 +1,4 @@
 var User = require('../models/user').User,
-    md5 = require('MD5'),
     userDirs = require('../lib/userDirs');
 
 exports.index = function(req, res) {

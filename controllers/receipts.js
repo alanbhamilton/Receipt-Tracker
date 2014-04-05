@@ -1,5 +1,4 @@
 var Receipt = require('../models/receipt').Receipt,
-    // md5 = require('MD5'),
     userDirs = require('../lib/userDirs');
 
 exports.index = function(req, res) {
