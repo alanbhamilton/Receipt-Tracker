@@ -15,7 +15,9 @@ exports.create = function(req, res) {
       res.json({error: 'Error adding user.'});
     } else {
       res.json(user);
-      userDirs.create(user._id.toString());
+      userDirs.create(user._id.toString(), function (err) {
+        if (err) { console.error(err); }
+      });
     }
   });
 };
