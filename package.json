@@ -21,7 +21,8 @@
     "express3-handlebars": "~0.5.0",
     "MD5": "~1.2.0",
     "lodash": "^2.4.1",
-    "node-tesseract": "^0.2.4"
+    "node-tesseract": "^0.2.4",
+    "async": "^0.6.2"
   },
   "devDependencies": {
     "bower": "~1.2.8",
