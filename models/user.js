@@ -23,7 +23,7 @@ var UserSchema = new Schema({
 UserSchema.methods.createReceiptFolders = function (cb) {
   var that = this;
   var userFolder = path.join(config.user_data.folder, this._id.toString());
-  
+
   async.eachSeries([userFolder, userFolder + '/_in'],
     function (folder, done) {
       fs.mkdir(folder, done);
@@ -31,6 +31,7 @@ UserSchema.methods.createReceiptFolders = function (cb) {
     function (err) {
       if (err) { return cb(err); }
       console.log('created new user folders for: ' + that._id.toString());
+      return cb(null);
     }
   );
 };
