@@ -30,7 +30,7 @@ UserSchema.methods.createReceiptFolders = function (cb) {
     },
     function (err) {
       if (err) { return cb(err); }
-      console.log('created new user folders for: ' + that._id.toString());
+      console.log('created new user folder for: ' + that._id.toString());
       return cb(null);
     }
   );
