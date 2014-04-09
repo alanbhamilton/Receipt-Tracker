@@ -7,6 +7,7 @@ var ReceiptSchema = new Schema({
   title: { type: String },
   date: { type: Date },
   total: { type: Number },
+  fullText: { type: String },
   dateProcessed: { type: Date, default: Date.now },
   tags: { type: Array, default: [] },
   note: { type: String },
