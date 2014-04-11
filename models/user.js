@@ -1,11 +1,9 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
-    async = require('async'),
+    // ObjectId = Schema.ObjectId,
     path = require('path'),
-    fs = require('fs'),
     mkdirp = require('mkdirp'),
     config = require('../config.json');
-    // ObjectId = Schema.ObjectId;
 
 // the schema
 
@@ -21,13 +19,19 @@ var UserSchema = new Schema({
 
 // methods
 
+UserSchema.methods.checkForNewReceipts = function (cb) {
+  var id = this._id.toString();
+  var folder = path.join(config.user_data.folder, id, '_in');
+
+};
+
 UserSchema.methods.createReceiptFolders = function (cb) {
-  var that = this;
-  var folder = path.join(config.user_data.folder, this._id.toString(), '_in');
+  var id = this._id.toString();
+  var folder = path.join(config.user_data.folder, id, '_in');
 
   mkdirp(folder, function (err) {
     if (err) { return cb(err); }
-    console.log('created new user folder for: ' + that._id.toString());
+    console.log('created new user folder for: ' + id;
     return cb(null);
   });
 };
