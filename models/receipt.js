@@ -3,7 +3,7 @@ var mongoose = require('mongoose'),
     ObjectId = Schema.ObjectId;
 
 var ReceiptSchema = new Schema({
-  owner: { type: ObjectId, ref: 'User' },
+  owner: { type: ObjectId },
   title: { type: String },
   date: { type: Date },
   total: { type: Number },
