@@ -37,7 +37,7 @@ describe('find', function () {
     });
   });
 
-  describe('#parseMonth', function () {
+  describe('#parseMonth()', function () {
     it('parses jan', function () {
       var results = find.parseMonth('jan');
       expect(results).to.equal(1);
@@ -60,101 +60,101 @@ describe('find', function () {
     });
   });
 
-  describe('#date', function () {
+  describe('#date()', function () {
     // standard test cases
-    it('finds date 06/01/1976', function () {
-      var results = find.date('06/01/1976');
-      expect(results.getTime()).to.equal(202449600000);
+    it('finds date 01/30/2014', function () {
+      var results = find.date('01/30/2014');
+      expect(results.getTime()).to.equal(1391058000000);
     });
-    it('finds date 06/01/76', function () {
-      var results = find.date('06/01/76');
-      expect(results.getTime()).to.equal(3358209600000);
+    it('finds date 01/30/14', function () {
+      var results = find.date('01/30/14');
+      expect(results.getTime()).to.equal(1391058000000);
     });
-    it('finds date jun 1, 1976', function () {
-      var results = find.date('jun 1, 1976');
-      expect(results.getTime()).to.equal(202449600000);
+    it('finds date jan 30, 2014', function () {
+      var results = find.date('jan 30, 2014');
+      expect(results.getTime()).to.equal(1391058000000);
     });
-    it('finds date jun/1/1976', function () {
-      var results = find.date('jun/1/1976');
-      expect(results.getTime()).to.equal(202449600000);
+    it('finds date jan/30/2014', function () {
+      var results = find.date('jan/30/2014');
+      expect(results.getTime()).to.equal(1391058000000);
     });
-    it('finds date jun/1/76', function () {
-      var results = find.date('jun/1/76');
-      expect(results.getTime()).to.equal(3358209600000);
+    it('finds date jan/30/14', function () {
+      var results = find.date('jan/30/14');
+      expect(results.getTime()).to.equal(1391058000000);
     });
-    it('finds date june 1, 1976', function () {
-      var results = find.date('june 1, 1976');
-      expect(results.getTime()).to.equal(202449600000);
+    it('finds date January 30, 2014', function () {
+      var results = find.date('January 30, 2014');
+      expect(results.getTime()).to.equal(1391058000000);
     });
-    it('finds date june/1/76', function () {
-      var results = find.date('june/1/76');
-      expect(results.getTime()).to.equal(3358209600000);
+    it('finds date January/30/14', function () {
+      var results = find.date('January/30/14');
+      expect(results.getTime()).to.equal(1391058000000);
     });
-    it('finds date 21/06/1976', function () {
-      var results = find.date('21/06/1976');
-      expect(results.getTime()).to.equal(204177600000);
+    it('finds date 30/01/2014', function () {
+      var results = find.date('30/01/2014');
+      expect(results.getTime()).to.equal(1391058000000);
     });
-    it('finds date 21/06/76', function () {
-      var results = find.date('21/06/76');
-      expect(results.getTime()).to.equal(3359937600000);
+    it('finds date 30/01/14', function () {
+      var results = find.date('30/01/14');
+      expect(results.getTime()).to.equal(1391058000000);
     });
-    it('finds date 1 jun 1976', function () {
-      var results = find.date('1 jun 1976');
-      expect(results.getTime()).to.equal(202449600000);
+    it('finds date 30 jan 2014', function () {
+      var results = find.date('30 jan 2014');
+      expect(results.getTime()).to.equal(1391058000000);
     });
-    it('finds date 1 june 1976 ', function () {
-      var results = find.date('1 june 1976');
-      expect(results.getTime()).to.equal(202449600000);
+    it('finds date 30 January 2014 ', function () {
+      var results = find.date('30 January 2014');
+      expect(results.getTime()).to.equal(1391058000000);
     });
-    it('finds date 1976/06/01', function () {
-      var results = find.date('1976/06/01');
-      expect(results.getTime()).to.equal(202449600000);
+    it('finds date 2014/01/30', function () {
+      var results = find.date('2014/01/30');
+      expect(results.getTime()).to.equal(1391058000000);
     });
 
     // extra test cases
-    it('finds date aaa1 june 1976bbb', function () {
-      var results = find.date('aaa1 june 1976bbb');
-      expect(results.getTime()).to.equal(202449600000);
+    it('finds date aaa30 January 2014bbb', function () {
+      var results = find.date('aaa30 January 2014bbb');
+      expect(results.getTime()).to.equal(1391058000000);
     });
-    it('finds date ttt21/06/1976ttt', function () {
-      var results = find.date('ttt21/06/1976ttt');
-      expect(results.getTime()).to.equal(204177600000);
+    it('finds date ttt30/01/2014ttt', function () {
+      var results = find.date('ttt30/01/2014ttt');
+      expect(results.getTime()).to.equal(1391058000000);
     });
-    it('finds date afhkjaf6/01/1976asdhf', function () {
-      var results = find.date('afhkjaf6/01/1976asdhf');
-      expect(results.getTime()).to.equal(202449600000);
+    it('finds date 000january 30, 2014zzz', function () {
+      var results = find.date('000january 30, 2014zzz');
+      expect(results.getTime()).to.equal(1391058000000);
     });
-    it('finds date 000june 1, 1976zzz', function () {
-      var results = find.date('000june 1, 1976zzz');
-      expect(results.getTime()).to.equal(202449600000);
+    it('finds date xyzjan/30/2014xyz', function () {
+      var results = find.date('xyzjan/30/2014xyz');
+      expect(results.getTime()).to.equal(1391058000000);
     });
-    it('finds date xyzjun/1/1976xyz', function () {
-      var results = find.date('xyzjun/1/1976xyz');
-      expect(results.getTime()).to.equal(202449600000);
+    it('finds date xyz2014/01/30xyz', function () {
+      var results = find.date('xyz2014/01/30xyz');
+      expect(results.getTime()).to.equal(1391058000000);
     });
-    it('finds date xyz1976/06/01xyz', function () {
-      var results = find.date('xyz1976/06/01xyz');
-      expect(results.getTime()).to.equal(202449600000);
+    it('finds date 01-30-2014', function () {
+      var results = find.date('01-30-2014');
+      expect(results.getTime()).to.equal(1391058000000);
     });
-    it('finds date 06-01-1976', function () {
-      var results = find.date('06-01-1976');
-      expect(results.getTime()).to.equal(202449600000);
+    it('finds date 01.30.2014', function () {
+      var results = find.date('01.30.2014');
+      expect(results.getTime()).to.equal(1391058000000);
     });
-    it('finds date 06.01.1976', function () {
-      var results = find.date('06.01.1976');
-      expect(results.getTime()).to.equal(202449600000);
+    it('finds date 01 30 2014', function () {
+      var results = find.date('01 30 2014');
+      expect(results.getTime()).to.equal(1391058000000);
     });
-    it('finds date 06 01 1976', function () {
-      var results = find.date('06 01 1976');
-      expect(results.getTime()).to.equal(202449600000);
+    it('finds date 1 30 2014', function () {
+      var results = find.date('1 30 2014');
+      expect(results.getTime()).to.equal(1391058000000);
     });
-    it('finds date 6 1 1976', function () {
-      var results = find.date('6 1 1976');
-      expect(results.getTime()).to.equal(202449600000);
+    it('does not find date Jan 30, 2009 over 5 years past', function () {
+      var results = find.date('Jan 30, 2009');
+      expect(results).to.equal(null);
     });
-    it('finds date 12 30 2020', function () {
+    it('does not find date 12 30 2020 in the future', function () {
       var results = find.date('12 30 2020');
-      expect(results.getTime()).to.equal(1609304400000);
+      expect(results).to.equal(null);
     });
     it('empty string returns null', function () {
       var results = find.date('');
